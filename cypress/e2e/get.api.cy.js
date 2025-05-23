@@ -3,15 +3,20 @@
 describe('GET /api/cy', () => {
 
     it('GET device', () => {
-
+    // Arrange
+    // Define the device ID to retrieve
         const device_id = '7'
 
+    // Act
+    // Send a GET request to retrieve the device with the specified ID
         cy.api({
             method: 'GET',
             url: 'https://api.restful-api.dev/objects/' + device_id,
             failOnStatusCode: false
         }).as('getDeviceResult')
 
+    // Assert
+    // Check the response status and body
         cy.get('@getDeviceResult')
             .then((response) => {
                 expect(response.status).equal(200)

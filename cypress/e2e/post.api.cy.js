@@ -3,7 +3,8 @@
 describe('POST /api/cy', () => {
 
     it('GET device', () => {
-
+    //Arrange
+    // Get the current time in ISO format and body for the request
         const currentTime = new Date().toISOString().slice(0, 16)
         const body = {
             'name': 'Apple MacBook Pro 16',
@@ -14,15 +15,17 @@ describe('POST /api/cy', () => {
                 'Hard disk size': '1 TB'
             }
         }
-
-        cy.request({
+    //Act
+    // Send a POST request to create a new device
+        cy.api({
             method: 'POST',
             failOnStatusCode: false,
             url: 'https://api.restful-api.dev/objects',
             body: body
         }).as('postDeviceResult')
 
-        //validações
+    //Assert
+    // Check the response status and body
         cy.get('@postDeviceResult').then((response) => {
             expect(response.status).equal(200)
             expect(response.body.id).not.empty
