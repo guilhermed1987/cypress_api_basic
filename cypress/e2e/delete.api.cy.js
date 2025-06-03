@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-describe('POST /api/cy', () => {
+describe('DELETE /api/cy', () => {
 
     it('DELETE device', () => {
     //Arrange
